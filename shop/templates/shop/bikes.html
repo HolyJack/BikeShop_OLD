@@ -1,16 +1,50 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/css/styles.css' %}">
     <title>bikes</title>
 </head>
 <body>
-    <h4>{{ greets }}</h4>
-    <div>
-        Choose one of our bikes:
+    <div id="head">
+        <div class="center_bar">
+            <ul>
+                <li><a href="default.asp">Home</a></li>
+                <li><a href="news.asp">News</a></li>
+                <li><a href="contact.asp">Contact</a></li>
+                <li><a href="about.asp">About</a></li>
+            </ul>
+            <div class="cart">
+                <p>PH</p>
+            </div>
+        </div>
+    </div>
+    <!--main structure for item list-->
+    <div id="items">
+        <!--sidebar-->
+        <div class="left">
+            <div class="sidebar">
+                <h2>placeholder</h2>
+            </div>
+        </div>
+        <!--list of items-->
+        <div class="center">
         {% for bike in bikes %}
-            <p><a href="{% url 'bike_detail' bike.pk %}">{{bike.name}}</a></p>
+            <div class="item">
+                <div class="img-container">
+                    <a class="item-image-link" href="{% url 'bike_detail' bike.pk %}">
+                        <img class="item-image" src="{{bike.image.url}}">
+                    </a>
+                </div>
+                <div class="item-info">
+                    <h3 class="item-name">{{bike.name}}</h3>
+                    <p class="item-price">500 points</p>
+                    <button class="item-to-cart"><p class="button-text">Add to Cart</p></button>
+                </div>
+            </div>
         {% endfor %}
+        </div>
     </div>
 </body>
 </html>

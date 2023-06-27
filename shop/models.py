@@ -44,6 +44,7 @@ class Bike(models.Model):
     frame = models.ForeignKey(Frame, on_delete=models.CASCADE)
     tire = models.ForeignKey(Tire, on_delete=models.CASCADE)
     seat = models.ForeignKey(Seat, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='upload/', default='/staticfiles/shop/img/dummy_240x300_ffffff_cccccc.png')
 
     def __str__(self):
         return self.name
